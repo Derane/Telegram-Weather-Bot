@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="16.170.246.57" id="984b6cc7-7ab9-4c07-960f-7593ed870e24" keyPath="E:\download\serverbots.pem" port="22" nameFormat="DESCRIPTIVE" username="ec2-user" useOpenSSHConfig="true" />
+      <sshConfig host="75.101.222.113" id="40a18674-7394-419b-964b-8306fb1d3d83" keyPath="E:\download\bot-rsa.pem" port="22" nameFormat="DESCRIPTIVE" username="ec2-user" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>
