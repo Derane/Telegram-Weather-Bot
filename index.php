@@ -9,10 +9,32 @@ require __DIR__ . '/vendor/autoload.php';
 require_once 'config.php';
 require_once 'functions.php';
 
-// var_dump(BASE_URL . 'setWebhook?url=https://webformyself-bots.space/bots/1/');
 $telegram = new \Telegram\Bot\Api(TOKEN);
 
-$update = json_decode(file_get_contents('php://input'));
+$update = $telegram->getWebhookUpdate();
+$chat_id = $update['message']['chat']['id'] ?? 0;
+$text = $update['message']['text'] ?? '';
+$name = $update['message']['from']['first_name'] ?? 'Guest';
 
-debug($update);
+if (!$chat_id) {
+    die;
+}
 
+if ($text == '/start') {
+    $telegram->sendMessage([
+        'chat_id' => $chat_id,
+        'text' => 'Hello! \n I am a weatherman bot that will tell you the weather in any city in the world',
+        'parse_mode' => 'HTML'
+    ]);
+} elseif ($text == '/help') {
+    $telegram->sendMessage([
+        'chat_id' => $chat_id,
+        'text' => 'I am a weatherman bot that will tell you the weather in any city in the world',
+        'parse_mode' => 'HTML'
+    ]);
+} else {
+    $telegram->sendMessage([
+        'chat_id' => $chat_id,
+        'text' => 'Please send correct address format',
+    ]);
+}
