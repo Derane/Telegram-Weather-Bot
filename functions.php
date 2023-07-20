@@ -9,12 +9,8 @@ function debug($data, $log = true): void
     }
 }
 
-function send_request(string $method, array $params = []): mixed
+function send_request(string $url): mixed
 {
-    $url = BASE_URL . $method;
-    if (!empty($params)) {
-        $url .= '?' . http_build_query($params);
-    }
     return json_decode(file_get_contents(
         $url,
         false,
